@@ -1,0 +1,41 @@
+{
+	"name": "sql_sup_inscripciones",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "dw_segip",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "inscripcion",
+				"type": "varchar"
+			},
+			{
+				"name": "ci_benefic",
+				"type": "varchar"
+			},
+			{
+				"name": "establecimiento",
+				"type": "varchar"
+			},
+			{
+				"name": "fecha_insc",
+				"type": "varchar"
+			},
+			{
+				"name": "semana_gestacion",
+				"type": "varchar"
+			},
+			{
+				"name": "estado",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "bronze",
+			"table": "sup_inscripciones"
+		}
+	}
+}
