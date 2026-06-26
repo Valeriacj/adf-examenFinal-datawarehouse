@@ -1,5 +1,5 @@
 {
-	"name": "dataflow1",
+	"name": "df_plata_segip_personas",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -50,7 +50,8 @@
 				"srcsegip derive(fecha_nacimiento = toDate(fecha_nacimiento),",
 				"          ci_padre = iif(isNull(ci_padre),'',ci_padre),",
 				"          ci_madre = iif(isNull(ci_madre),'',ci_madre),",
-				"          profesion = iif(isNull(profesion),'SIN REGISTRO',profesion)) ~> derivedColumn1",
+				"          profesion = iif(isNull(profesion),'SIN REGISTRO',profesion),",
+				"          ci_conyuge = ERROR_FUNCTION('ci_conyuge iif(isNull(ci_conyuge),__SINGLE_QUOTE____SINGLE_QUOTE__,ci_conyuge)')) ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
