@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
+				"name": "bja_controles_pediatricos",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -37,72 +37,120 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ci",
+									"name": "control_pediatrico_id",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "ci",
+									"name": "control_pediatrico_id",
 									"type": "String",
 									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": "nombres",
+									"name": "ci_nino",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "nombres",
+									"name": "ci_nino",
 									"type": "String",
 									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": "apellido_paterno",
+									"name": "ci_madre",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "apellido_paterno",
+									"name": "ci_madre",
 									"type": "String",
 									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": "apellido_materno",
+									"name": "establecimiento_id",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "apellido_materno",
+									"name": "establecimiento_id",
 									"type": "String",
 									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": "fecha_nacimiento",
+									"name": "nro_control",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "fecha_nacimiento",
+									"name": "nro_control",
 									"type": "String",
 									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": "genero",
+									"name": "fecha_control",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "genero",
+									"name": "fecha_control",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "peso_nino_kg",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "peso_nino_kg",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "talla_nino_cm",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "talla_nino_cm",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "vacuna_aplicada",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "vacuna_aplicada",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "resultado",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "resultado",
 									"type": "String",
 									"physicalType": "varchar"
 								}
@@ -117,13 +165,157 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "segip_personas_csv",
+						"referenceName": "bja_controles_pediatricos",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "sql_segip_personas",
+						"referenceName": "sql_bja_controles_pediatricos",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "bja_controles_prenatales",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"sink": {
+									"name": "control_pediatrico_id",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "ci_nino",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "ci_madre",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "establecimiento_id",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "establecimiento_id",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "nro_control",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "nro_control",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "fecha_control",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "fecha_control",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "peso_nino_kg",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "talla_nino_cm",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "vacuna_aplicada",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "resultado",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "resultado",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "bja_controles_prenatales",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "sql_bja_controles_prenatales",
 						"type": "DatasetReference"
 					}
 				]
