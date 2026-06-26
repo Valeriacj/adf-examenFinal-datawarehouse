@@ -1,0 +1,41 @@
+{
+	"name": "sql_segip_personas",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "dw_segip",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ci",
+				"type": "varchar"
+			},
+			{
+				"name": "nombres",
+				"type": "varchar"
+			},
+			{
+				"name": "apellido_paterno",
+				"type": "varchar"
+			},
+			{
+				"name": "apellido_materno",
+				"type": "varchar"
+			},
+			{
+				"name": "fecha_nacimiento",
+				"type": "varchar"
+			},
+			{
+				"name": "genero",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "bronze",
+			"table": "segip_personas"
+		}
+	}
+}
